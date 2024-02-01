@@ -1,0 +1,23 @@
+[package]
+name = "worker-rust"
+version = "0.1.0"
+edition = "2021"
+description = "在cloudflare运行rust helloworld"
+license = "MIT"
+license_file = "LICENSE.txt"
+repository = "https://github.com/yangzhiyao/worker-rust.git"
+
+# https://github.com/rustwasm/wasm-pack/issues/1247
+[package.metadata.wasm-pack.profile.release]
+wasm-opt = false
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+worker = "0.0.18"
+
+[profile.release]
+lto = true
+strip = true
+codegen-units = 1
